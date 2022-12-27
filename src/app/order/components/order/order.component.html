@@ -1,0 +1,19 @@
+<mat-horizontal-stepper>
+    <mat-step>
+        <ng-template matStepLabel>Sus Productos</ng-template>
+        <div *ngIf="(products$ | async) as products">
+            <p *ngIf="products.length===0">
+                NO HAY Productos
+            </p>
+            <ul>
+                <li *ngFor="let item of products">
+                    {{item.title}}
+                </li>
+            </ul>
+        </div>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Datos Personales</ng-template>
+    </mat-step>
+</mat-horizontal-stepper>
+

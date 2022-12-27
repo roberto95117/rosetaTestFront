@@ -1,0 +1,50 @@
+<p>inicio works!</p>
+<button mat-button color="primary" routerLink="/estudiante">Estudiante</button>
+
+<!--string interpolation -->
+{{'hola'}}
+{{1+2}}
+<input type="text" [(ngModel)]="title1">
+{{title1}}
+
+<div *ngIf="title1 ==='mostrar'">
+    Esto es un div
+</div>
+
+<div [ngSwitch]="title1">
+    <a *ngSwitchCase="'1'">uno</a>
+    <a *ngSwitchCase="'2'">dos</a>
+    <a *ngSwitchCase="'3'">tres</a>
+    <a *ngSwitchDefault>no hay match</a>
+</div>
+
+<br>
+
+<button (click)="addItem()">Agregar</button>
+
+<br>
+<ul>
+    <li *ngIf="nombres.length === 0">La lista esta vacia</li>
+    <li *ngFor="let item of nombres; index as i">
+        {{item}} {{i}}
+        <button (click)="rmItem(i)">Eliminar</button>
+    </li>
+</ul>
+<h1>CON *NGFOR</h1>
+<div *ngFor="let item of products">
+    <label >{{item.id}}</label>
+    <br>
+    <label >{{item.title}}</label>
+    <br>
+    <label >{{item.image}}</label>
+    <br>
+    <label >{{item.description}}</label>
+</div>
+
+<H1>COMO INPUT HACIA COMPONENTE</H1>
+<div class="product-grid" >
+    <app-product *ngFor="let item of products" (onAgregarCarrito)="onReciveEvent($event)" [productInput]="item"></app-product>
+</div>
+
+<input type="text" [(ngModel)]="power">
+{{power | exponential}}
